@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>FRESH PRINTS | Standout Designs. Lasting Impressions.</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&amp;family=Inter:wght@400;500;600&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Tailwind Configuration -->
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed": "#e5e2e1",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-container": "#00616d",
+                        "tertiary-fixed": "#ffd7f5",
+                        "inverse-surface": "#2f3131",
+                        "surface-container-high": "#e8e8e8",
+                        "surface-container": "#eeeeee",
+                        "on-tertiary-fixed-variant": "#810081",
+                        "background": "#f9f9f9",
+                        "on-tertiary": "#ffffff",
+                        "surface-bright": "#f9f9f9",
+                        "on-tertiary-fixed": "#380038",
+                        "on-primary": "#ffffff",
+                        "secondary-container": "#00e3fd",
+                        "on-tertiary-container": "#e800e8",
+                        "primary": "#000000",
+                        "on-error-container": "#93000a",
+                        "surface": "#f9f9f9",
+                        "secondary-fixed-dim": "#00daf3",
+                        "surface-dim": "#dadada",
+                        "on-surface": "#1a1c1c",
+                        "primary-container": "#1c1b1b",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed": "#1c1b1b",
+                        "outline": "#747878",
+                        "error-container": "#ffdad6",
+                        "surface-tint": "#5f5e5e",
+                        "surface-variant": "#e2e2e2",
+                        "secondary-fixed": "#9cf0ff",
+                        "on-secondary-fixed-variant": "#004f58",
+                        "tertiary": "#000000",
+                        "on-primary-container": "#858383",
+                        "surface-container-low": "#f3f3f4",
+                        "on-primary-fixed-variant": "#474646",
+                        "on-background": "#1a1c1c",
+                        "inverse-on-surface": "#f0f1f1",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface-variant": "#444748",
+                        "tertiary-fixed-dim": "#ffabf3",
+                        "secondary": "#006875",
+                        "surface-container-highest": "#e2e2e2",
+                        "outline-variant": "#c4c7c7",
+                        "tertiary-container": "#380038",
+                        "on-secondary-fixed": "#001f24",
+                        "on-error": "#ffffff",
+                        "primary-fixed-dim": "#c8c6c5",
+                        "inverse-primary": "#c8c6c5"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-lg": "64px",
+                        "gutter": "24px",
+                        "container-max": "1440px",
+                        "section-gap": "128px",
+                        "margin-desktop": "64px",
+                        "stack-md": "24px",
+                        "margin-mobile": "16px",
+                        "unit": "8px",
+                        "stack-sm": "8px"
+                    },
+                    "fontFamily": {
+                        "label-bold": ["Inter"],
+                        "headline-xl": ["Syne"],
+                        "headline-sm": ["Syne"],
+                        "headline-md": ["Syne"],
+                        "headline-lg": ["Syne"],
+                        "headline-lg-mobile": ["Syne"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-bold": ["14px", { "lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-xl": ["72px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "800" }],
+                        "headline-sm": ["24px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "headline-md": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "headline-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "headline-lg-mobile": ["36px", { "lineHeight": "1.1", "fontWeight": "800" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "1.2", "fontWeight": "500" }]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .controlled-chaos-blob {
+            filter: blur(80px);
+            opacity: 0.15;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .hover-accent:hover {
+            background-color: var(--accent-color, #00e3fd);
+        }
+
+        .card-outline {
+            border: 1px solid #111111;
+        }
+
+        .asymmetric-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+        }
+    </style>
+</head>
+
+<body class="bg-background text-on-background font-body-md selection:bg-secondary-container selection:text-primary">
+    <main class="relative overflow-hidden">
+        <!-- Atmospheric Blobs -->
+        <div class="absolute top-20 -left-20 w-96 h-96 rounded-full bg-secondary-container controlled-chaos-blob"></div>
+        <div
+            class="absolute top-1/2 -right-20 w-[500px] h-[500px] rounded-full bg-on-tertiary-container controlled-chaos-blob">
+        </div>
+        <!-- Hero Section -->
+        <section class="px-margin-desktop py-stack-lg lg:py-section-gap max-w-container-max mx-auto">
+            <div class="asymmetric-grid gap-gutter">
+                <div class="col-span-12 lg:col-span-8">
+                    <h1 class="font-headline-xl text-headline-xl text-primary leading-none uppercase mb-stack-md">
+                        Standout <span class="text-secondary">Designs.</span><br />
+                        Lasting <span class="text-on-tertiary-container">Impressions.</span>
+                    </h1>
+                    <p class="font-body-lg text-body-lg max-w-xl mb-stack-lg text-on-surface-variant">
+                        High-fidelity custom prints with a raw, street-art soul. We don't just print stickers; we
+                        manufacture identity for the bold and the restless.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-gutter">
+                        <button
+                            class="bg-primary text-on-primary px-8 py-4 font-label-bold text-label-bold uppercase tracking-widest hover:bg-secondary-container hover:text-primary transition-colors active:scale-95">
+                            Start Customizing
+                        </button>
+                        <button
+                            class="border-2 border-primary text-primary px-8 py-4 font-label-bold text-label-bold uppercase tracking-widest hover:bg-on-tertiary-container hover:text-on-tertiary hover:border-on-tertiary-container transition-colors active:scale-95">
+                            View Portfolio
+                        </button>
+                    </div>
+                </div>
+                <div class="col-span-12 lg:col-span-4 relative mt-stack-lg lg:mt-0">
+                    <div
+                        class="aspect-square card-outline bg-white flex items-center justify-center p-0 relative group">
+                        <div class="absolute inset-0 z-0 bg-primary opacity-0 group-hover:opacity-5 transition-opacity">
+                        </div>
+                        <img class="w-full h-full object-cover"
+                            data-alt="A high-fidelity macro shot of a premium die-cut sticker with a vibrant neon pink and black graphic design. The sticker is shown in a sharp, high-contrast studio setting with professional top-down lighting. The background is a clean, minimal white surface with subtle hard shadows, emphasizing the sticker's thick premium vinyl texture and crisp edges."
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCuYcYhtX0iht0LdvPwr4S2dfj6CKipplDoZOFioZc-w-CyjH_m1BNt6p-ybKeiApl5cutviZRlE-VUh1BxhbnthBDm-JIq1xW7y84CisWGP7M_wZKA4Dn9LKAa1PLj8q2pMUHcTEzDjyD9ohieRNBCE45YMZTzAwLoqkW4KlOV-JeilNS0rMWB_2aY1L-RpiU4Q9Hvo7pX5-gTaLUIePYV5MqgiHXRp0uUuxGnju7w2t85ATxme2Zu" />
+                        <div
+                            class="absolute -bottom-4 -left-4 bg-primary text-white p-4 uppercase font-label-bold text-label-sm">
+                            Premium Matte Vinyl
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Brand Statement -->
+        <section class="bg-primary text-on-primary py-stack-lg overflow-hidden whitespace-nowrap">
+            <div class="flex animate-marquee gap-gutter">
+                <span class="font-headline-lg text-headline-lg italic uppercase opacity-50">CRISP WHITE SPACE • ELECTRIC
+                    COLOR • HIGH TENSION • SWISS PRECISION • RAW SOUL • </span>
+                <span class="font-headline-lg text-headline-lg italic uppercase opacity-50">CRISP WHITE SPACE • ELECTRIC
+                    COLOR • HIGH TENSION • SWISS PRECISION • RAW SOUL • </span>
+            </div>
+            <style>
+                @keyframes marquee {
+                    0% {
+                        transform: translateX(0);
+                    }
+
+                    100% {
+                        transform: translateX(-50%);
+                    }
+                }
+
+                .animate-marquee {
+                    animation: marquee 30s linear infinite;
+                    display: flex;
+                    width: max-content;
+                }
+            </style>
+        </section>
+        <!-- Bento Category Grid -->
+        <section class="px-margin-desktop py-section-gap max-w-container-max mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-gutter auto-rows-[280px]">
+                <!-- Large Feature -->
+                <div
+                    class="md:col-span-2 md:row-span-2 card-outline bg-white group cursor-pointer relative overflow-hidden flex flex-col justify-end p-8">
+                    <div class="absolute inset-0">
+                        <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                            data-alt="A collection of diverse holographic stickers arranged in an artistic, chaotic but balanced composition. The lighting is high-contrast with sharp glints reflecting off the metallic surfaces. Colors include electric blues, violets, and deep blacks against a stark white gallery background, maintaining a premium minimalist aesthetic."
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmAUO_FQhdJp-dpaqZwZnTuU2wtSpXz77CMKTcLIvPFx1t2009VmkqvVZGL-QpbjUqp1tFc2uwn6EORuBtfJlOsbWJbqcwz1Dhbu70g1L8fI_E65n5W6lfUrH_3zf_4WKss0PQGxhW1u4FKzgDWyC56AkS_GR7T0y7o6O4ZJa1E012bwR7eetVYkUr7liz7qLsDy9cACww_ke_ixV1hHs204be2sEqTjgoxUvTW7tYYy4DBo08phdm" />
+                    </div>
+                    <div class="relative z-10 bg-white p-4 border border-primary w-fit">
+                        <h3 class="font-headline-sm text-headline-sm uppercase">Holographic Series</h3>
+                        <p class="font-label-sm text-label-sm text-on-surface-variant">Elevate your brand with
+                            light-refracting tech.</p>
+                    </div>
+                </div>
+                <!-- Small Feature 1 -->
+                <div
+                    class="md:col-span-2 card-outline bg-secondary-container group cursor-pointer p-8 flex flex-col justify-between border-b-4 border-r-4 border-primary">
+                    <div class="flex justify-between items-start">
+                        <span class="material-symbols-outlined text-4xl">brush</span>
+                        <span class="font-label-bold text-label-bold uppercase">New Tech</span>
+                    </div>
+                    <h3 class="font-headline-md text-headline-md uppercase leading-tight">UV Spot Gloss</h3>
+                </div>
+                <!-- Small Feature 2 -->
+                <div
+                    class="md:col-span-1 card-outline bg-white group cursor-pointer p-8 hover:bg-on-tertiary-container hover:text-on-tertiary transition-colors">
+                    <h3 class="font-headline-sm text-headline-sm uppercase mb-stack-sm">Die-Cut</h3>
+                    <p class="font-label-sm text-label-sm">Any shape, any size, zero compromises.</p>
+                </div>
+                <!-- Small Feature 3 -->
+                <div
+                    class="md:col-span-1 card-outline bg-primary text-on-primary group cursor-pointer p-8 relative overflow-hidden">
+                    <div class="absolute -right-4 -bottom-4 opacity-20">
+                        <span class="material-symbols-outlined text-9xl">package_2</span>
+                    </div>
+                    <h3 class="font-headline-sm text-headline-sm uppercase mb-stack-sm">Bulk Prints</h3>
+                    <p class="font-label-sm text-label-sm">Volume that scales with your ambition.</p>
+                </div>
+            </div>
+        </section>
+        <!-- Featured Products (Showcase) -->
+        <section class="px-margin-desktop pb-section-gap max-w-container-max mx-auto">
+            <div class="flex justify-between items-end mb-stack-lg border-b-2 border-primary pb-stack-sm">
+                <h2 class="font-headline-lg text-headline-lg uppercase">Featured drops</h2>
+                <a class="font-label-bold text-label-bold uppercase hover:text-secondary-fixed-dim transition-colors flex items-center gap-2"
+                    href="#">
+                    Shop all <span class="material-symbols-outlined">arrow_forward</span>
+                </a>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
+                <!-- Product Card 1 -->
+                <div class="group">
+                    <div class="aspect-[3/4] card-outline bg-surface mb-stack-sm overflow-hidden relative">
+                        <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                            data-alt="A minimalist sticker design featuring a bold black typography on a vibrant yellow circular background. The sticker is shown being peeled back slightly from its backing, revealing the high-quality adhesive layer. Studio lighting creates sharp, clean reflections on the glossy finish, emphasizing the professional manufacturing quality."
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5glFfTMBzZE8lOq9bm3qYZQrER1_bPdqXzCYxvr4ZBbiaLuUyqfoYMhw_bSTHroAZWvP5_6PSYIqqZwv3zeOVdDk60jildeydPKeP7KVep1lIWrQZywbefBBxEV4fQJTmoZfmdJKLgci2pEc6Xn022bvUyt6U1Y9fzHkAzq6oQCm8tyVJYGHsXKWhNkHjxcIhOBpfLmsAzzrfMq7XRlGqEhBJe5b2JG740aPPN6Ry7u-bVtJc5gGE" />
+                        <div class="absolute top-4 left-4">
+                            <span
+                                class="bg-primary text-white px-3 py-1 font-label-bold text-label-sm uppercase">Limited</span>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="font-label-bold text-label-bold uppercase">The Chaos Circle</p>
+                            <p class="text-on-surface-variant font-label-sm text-label-sm">Premium Vinyl Pack</p>
+                        </div>
+                        <p class="font-label-bold text-label-bold">$24.00</p>
+                    </div>
+                </div>
+                <!-- Product Card 2 -->
+                <div class="group">
+                    <div class="aspect-[3/4] card-outline bg-surface mb-stack-sm overflow-hidden relative">
+                        <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                            data-alt="A set of rectangular stickers with aggressive, street-art inspired calligraphy in white ink over a deep matte black background. The stickers are displayed on a piece of brushed metal, with cold, blue-toned lighting creating a modern industrial vibe. Every ink stroke is sharp and well-defined, showcasing the high-resolution printing capability."
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDasaKEG7ZHPsCnBVXQH40txqHGYzvXVJP7z5vPL_pVnv6deWDZklfVzcwp20UgmdH1vcA4ak3eJzY8_OeHN1M7VqW7tPywW701FKH0_LRLoK6NKe_4ke3XC88klXkc90329_pctotMqa949ATwahw6vZ5EsHnfF8NKEXzm2F9AbM05auFmkAl6nFQRrrlu5QuepiA0ekFg9qp60P7Il0M8y6yHAzLFS9BpFMx1vNfX46JFjK1G5PPz" />
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="font-label-bold text-label-bold uppercase">Type Noir Set</p>
+                            <p class="text-on-surface-variant font-label-sm text-label-sm">Gloss Finish</p>
+                        </div>
+                        <p class="font-label-bold text-label-bold">$18.00</p>
+                    </div>
+                </div>
+                <!-- Product Card 3 -->
+                <div class="group">
+                    <div class="aspect-[3/4] card-outline bg-surface mb-stack-sm overflow-hidden relative">
+                        <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                            data-alt="An intricately detailed sticker of a stylized cybernetic eye, featuring vibrant cyan and magenta accents. The sticker uses a mix of matte and spot-UV gloss textures. It is presented in a minimalist high-key setting with a single hard shadow, highlighting the layered textural quality of the print. The aesthetic is clean, professional, and high-energy."
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDiFv8fwmVxrIWKV3LG2RSUJBcAWKw-_dD68O4m03HQYfelHAY0_4KqClg3OFUPCr3yQ57nSVuONxUQMu-LjMrCCE2vuLiAtO44KLXhv_gIqORV_9V1DLUFN0KiXwCekHxGRt-zMr8vMmyjuR6hjckzevFoXJy-N_uIQMCFNIHo8CEBsubupkIAHkXoJUZMineGA2XyeUZuT3qAmQSCZvS5tV0zj7P1Ufky78tKntttD7U981FIpTb6" />
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="font-label-bold text-label-bold uppercase">Cyber Eye UV</p>
+                            <p class="text-on-surface-variant font-label-sm text-label-sm">Spot Gloss Special</p>
+                        </div>
+                        <p class="font-label-bold text-label-bold">$32.00</p>
+                    </div>
+                </div>
+                <!-- Product Card 4 -->
+                <div class="group">
+                    <div class="aspect-[3/4] card-outline bg-surface mb-stack-sm overflow-hidden relative">
+                        <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                            data-alt="A minimalist sticker pack with clean geometric shapes in a monochrome palette of blacks, whites, and greys, with one single sticker in a bright electric blue. The collection is laid out on a white workspace with high-contrast, directional lighting that emphasizes the crisp, die-cut edges and the premium 3M vinyl quality. The mood is sophisticated and artistic."
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwLWJrowXnN5-ctc0MhwwXlI5nTxndRnSr7SjiA1vPm6bITsGddbXY9Dw2L93xA1JNdetsClNiSrk7AcXjjtfvvDCYUrbjga0MvMdtB4PX20wKH8I3cquA8G6IyDLz8Lz8cAPKI1O98i6XSzB2sd3yIsbG-_l9Rd6zM2qeb1gkZ8Zw2WQs3SDXd43xHwJmJ2ux79ZB-pO5Y6zvZMcnqZrLd86Kkso6uU3ZvlH7QIWXoJi1B9UeTHfX" />
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="font-label-bold text-label-bold uppercase">Geometry Pack</p>
+                            <p class="text-on-surface-variant font-label-sm text-label-sm">Matte Finish</p>
+                        </div>
+                        <p class="font-label-bold text-label-bold">$22.00</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Customizer CTA -->
+        <section class="px-margin-desktop pb-section-gap max-w-container-max mx-auto">
+            <div class="relative w-full h-[500px] card-outline bg-white overflow-hidden flex items-center">
+                <div class="absolute inset-0 z-0">
+
+                </div>
+                <div
+                    class="relative z-10 ml-margin-desktop max-w-lg bg-white p-12 card-outline border-l-[12px] border-l-secondary-container">
+                    <h2 class="font-headline-lg text-headline-lg uppercase mb-stack-sm leading-tight">Your
+                        vision,<br />Our execution.</h2>
+                    <p class="font-body-md text-body-md mb-stack-lg text-on-surface-variant">
+                        Our interactive customizer allows you to upload your designs and see them in high-fidelity 3D
+                        before you hit order.
+                    </p>
+                    <button
+                        class="bg-primary text-on-primary px-8 py-4 font-label-bold text-label-bold uppercase tracking-widest hover:bg-secondary-container hover:text-primary transition-colors flex items-center gap-4">
+                        Launch Customizer <span class="material-symbols-outlined">launch</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Micro-interactions Script -->
+    <script>
+        // Smooth scaling effect for product cards
+        document.querySelectorAll('.group').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-4px)';
+                card.style.transition = 'transform 0.3s ease';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Interactive "Controlled Chaos" cursor effect
+        document.addEventListener('mousemove', (e) => {
+            const blob = document.querySelector('.controlled-chaos-blob');
+            if (blob) {
+                const x = (e.clientX / window.innerWidth) * 20;
+                const y = (e.clientY / window.innerHeight) * 20;
+                blob.style.transform = `translate(${x}px, ${y}px)`;
+            }
+        });
+    </script>
+</body>
