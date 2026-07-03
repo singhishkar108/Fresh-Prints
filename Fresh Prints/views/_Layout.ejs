@@ -15,6 +15,9 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
         rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&amp;family=Inter:wght@400;500;600&amp;family=Sedgwick+Ave+Display&amp;display=swap"
+        rel="stylesheet" />
 
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 
@@ -60,6 +63,12 @@
                         "label-bold": ["Inter"],
                         "body-md": ["Inter"]
                     },
+                    fontFamily: {
+                        "headline-lg": ["Syne"],
+                        "label-bold": ["Inter"],
+                        "body-md": ["Inter"],
+                        "graffiti": ["Sedgwick Ave Display"]
+                    },
                     fontSize: {
                         "headline-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800" }],
                         "label-bold": ["14px", { "lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600" }],
@@ -75,8 +84,18 @@
 
     <header class="w-full top-0 sticky z-50 bg-background border-b-2 border-primary">
         <nav class="flex justify-between items-center px-margin-desktop py-4 w-full max-w-container-max mx-auto">
-            <a class="font-headline-md text-headline-md font-black tracking-tighter text-primary" href="#">FRESH
-                PRINTS</a>
+            <a class="group relative inline-block font-headline-md text-headline-md font-black tracking-tighter text-primary"
+                href="#">
+                <span
+                    class="absolute left-0 top-0 font-graffiti text-chaos-magenta tracking-normal uppercase opacity-0 transform translate-x-1 translate-y-1 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:translate-x-3 group-hover:translate-y-3 pointer-events-none select-none z-0">
+                    FRESH PRINTS
+                </span>
+
+                <span
+                    class="relative z-10 transition-transform duration-300 ease-out group-hover:-translate-x-1 group-hover:-translate-y-1">
+                    FRESH PRINTS
+                </span>
+            </a>
             <div class="hidden md:flex items-center gap-stack-lg">
                 <div class="flex gap-gutter">
                     <a class="font-label-bold text-label-bold text-on-surface-variant hover:text-secondary-fixed-dim transition-colors duration-200"
