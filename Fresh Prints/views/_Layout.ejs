@@ -8,7 +8,6 @@
         <%= title %> | Fresh Prints
     </title>
 
-    <!-- Google Fonts Matching contact.html -->
     <link
         href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&amp;family=Inter:wght@400;500;600&amp;display=swap"
         rel="stylesheet" />
@@ -16,17 +15,257 @@
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
         rel="stylesheet" />
     <link
-        href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&amp;family=Inter:wght@400;500;600&amp;family=Sedgwick+Ave+Display&amp;display=swap"
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&amp;family=Inter:wght@400;500;600&amp;family=Sedgwick+Ave&amp;display=swap"
+        rel="stylesheet" />
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&amp;family=Inter:wght@400;500;600&amp;family=Sedgwick+Ave&amp;family=Sedgwick+Ave+Display&amp;display=swap"
         rel="stylesheet" />
 
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 
-    <!-- FIXED: Corrected path for Express static middleware -->
     <link rel="stylesheet" href="/css/site.css" />
 
     <style>
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        /* --- GRAFFITI ANIMATION --- */
+
+        .chaos-glitch-text {
+            position: relative;
+            font-weight: 900;
+            /* Lower frame rate (8fps) via steps(8) makes it look like hand-drawn cell animation */
+            animation: nfsStyleSwap 1.2s steps(8) infinite, nfsJitter 0.30s steps(2) infinite;
+        }
+
+        /* Pseudo-elements generate the overlapping chaotic art styles */
+        .chaos-glitch-text::before,
+        .chaos-glitch-text::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+        }
+
+        /* Dynamic Outline Layer */
+        .chaos-glitch-text::before {
+            z-index: -1;
+            animation: nfsOutlineSwap 1.2s steps(8) infinite;
+            -webkit-text-stroke: 4px #000000;
+        }
+
+        /* Dynamic Shadow/Artifact Layer */
+        .chaos-glitch-text::after {
+            z-index: -2;
+            animation: nfsShadowSwap 1.2s steps(8) infinite;
+        }
+
+        /* --- THE KINETIC KEYFRAMES --- */
+
+        /* 1. Core Text Variant Swapping (Fills & Textures) */
+        @keyframes nfsStyleSwap {
+
+            0%,
+            100% {
+                color: #00e3fd;
+                /* Neon Cyan Base */
+                text-shadow: none;
+            }
+
+            12.5% {
+                color: #e800e8;
+                /* Neon Magenta State */
+            }
+
+            25% {
+                color: #07FD03;
+                /* Sketch Green State */
+            }
+
+            37.5% {
+                /* Transparent fill with a rough center-line effect simulated via stripe gradients */
+                color: transparent;
+                background: linear-gradient(90deg, #111 25%, transparent 25%, transparent 75%, #111 75%);
+                background-size: 8px 100%;
+                -webkit-background-clip: text;
+            }
+
+            50% {
+                color: #ffffff;
+                /* Stark White Contrast Flash */
+            }
+
+            62.5% {
+                color: #6200ea;
+                /* Deep Industrial Violet */
+            }
+
+            75% {
+                color: #00e3fd;
+            }
+
+            87.5% {
+                /* Sticker Bomb/Doodle Emulation Style */
+                color: #eaff00;
+            }
+        }
+
+        /* 2. Rapid Stroke/Border Morphing */
+        @keyframes nfsOutlineSwap {
+
+            0%,
+            50%,
+            100% {
+                -webkit-text-stroke: 4px #000000;
+            }
+
+            12.5%,
+            62.5% {
+                -webkit-text-stroke: 2px #ffffff;
+            }
+
+            25%,
+            75% {
+                -webkit-text-stroke: 6px #e800e8;
+            }
+
+            37.5%,
+            87.5% {
+                -webkit-text-stroke: 3px transparent;
+            }
+        }
+
+        /* 3. Aggressive Drop-Shadow & Halftone Offset Jumps */
+        @keyframes nfsShadowSwap {
+
+            0%,
+            100% {
+                text-shadow: 4px 4px 0px #e800e8;
+            }
+
+            25% {
+                text-shadow: -6px 2px 0px #00e3fd;
+            }
+
+            50% {
+                text-shadow: 0px 0px 20px #eaff00;
+            }
+
+            75% {
+                text-shadow: 8px -4px 0px #111111;
+            }
+        }
+
+        /* 4. Jagged Line Boiling & Positional Skew (8-12 FPS Feel) */
+        @keyframes nfsJitter {
+            0% {
+                transform: translate(1px, -1px) skewX(-2deg) scaleX(1.5);
+            }
+
+            50% {
+                transform: translate(-2px, 2px) skewX(3deg) scaleX(1.55);
+            }
+
+            100% {
+                transform: translate(2px, 1px) skewX(-1deg) scaleX(1.48);
+            }
+        }
+
+        /* --- STAGGERED DUAL-COLOR SINGLE UNDERLINE --- */
+        .nfs-nav-link {
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        .nfs-nav-link::before,
+        .nfs-nav-link::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0px;
+            /* Both share the exact same line position */
+            width: 0;
+            height: 3px;
+        }
+
+        /* First phase: Pink line */
+        .nfs-nav-link::before {
+            background-color: #e800e8;
+        }
+
+        /* Second phase: Teal line (Layers directly on top of the pink line) */
+        .nfs-nav-link::after {
+            background-color: #00e3fd;
+        }
+
+        /* Trigger animations at a slower pace (0.5s) */
+        .nfs-nav-link:hover::before {
+            animation: nfsUnderline 0.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+
+        .nfs-nav-link:hover::after {
+            animation: nfsUnderline 0.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+            animation-delay: 0.15s;
+            /* Staggered delay so teal rolls over the pink midway */
+        }
+
+        @keyframes nfsUnderline {
+            0% {
+                width: 0;
+            }
+
+            100% {
+                width: 100%;
+            }
+        }
+
+        /* --- NAV GRAFFITI HIGHLIGHT & TEXT TOGGLE --- */
+
+        /* Centers the graffiti container perfectly over the link's exact horizontal footprint */
+        .nfs-graffiti-container {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            transform: translateY(-50%);
+            pointer-events: none;
+            z-index: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Forces the display text to expand exactly to the edges of the parent link container */
+        .nfs-bg-graffiti {
+            color: #e800e8;
+            opacity: 0.50;
+            /* Changed to 50% opacity */
+            font-family: 'Sedgwick Ave Display', sans-serif;
+            /* Explicit fallback mapping */
+            white-space: nowrap;
+            width: 100%;
+            text-align: center;
+            display: block;
+            text-justify: inter-character;
+        }
+
+        /* Handle transition settings for link text */
+        .nfs-nav-link>span.relative {
+            transition: color 0.15s ease-in-out, font-family 0.15s ease-in-out;
+        }
+
+        /* Explicit styling modifications on hover */
+        .nfs-nav-link:hover>span.relative {
+            color: #000000;
+            /* Font turns black */
+            font-family: 'Syne', sans-serif;
+            /* Changes to Syne */
         }
     </style>
 
@@ -37,7 +276,7 @@
                 extend: {
                     colors: {
                         "primary": "#000000",
-                        "on-primary": "#ffffff", /* FIXED: Added missing white color utility */
+                        "on-primary": "#ffffff",
                         "secondary-fixed-dim": "#00daf3",
                         "on-surface-variant": "#444748",
                         "background": "#f9f9f9",
@@ -61,13 +300,9 @@
                     fontFamily: {
                         "headline-lg": ["Syne"],
                         "label-bold": ["Inter"],
-                        "body-md": ["Inter"]
-                    },
-                    fontFamily: {
-                        "headline-lg": ["Syne"],
-                        "label-bold": ["Inter"],
                         "body-md": ["Inter"],
-                        "graffiti": ["Sedgwick Ave Display"]
+                        "graffiti": ["Sedgwick Ave"],
+                        "graffiti-display": ["Sedgwick Ave Display"]
                     },
                     fontSize: {
                         "headline-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800" }],
@@ -78,36 +313,77 @@
             }
         }
     </script>
+
 </head>
 
 <body class="bg-background text-on-background font-body-md selection:bg-secondary-container selection:text-primary">
 
     <header class="w-full top-0 sticky z-50 bg-background border-b-2 border-primary">
         <nav class="flex justify-between items-center px-margin-desktop py-4 w-full max-w-container-max mx-auto">
-            <a class="group relative inline-block font-headline-md text-headline-md font-black tracking-tighter text-primary"
+            <a class="group relative inline-flex items-center justify-center font-headline-md text-headline-md font-black tracking-tighter text-primary select-none"
                 href="#">
                 <span
-                    class="absolute left-0 top-0 font-graffiti text-chaos-magenta tracking-normal uppercase opacity-0 transform translate-x-1 translate-y-1 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:translate-x-3 group-hover:translate-y-3 pointer-events-none select-none z-0">
-                    FRESH PRINTS
+                    class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-0">
+                    <span
+                        class="font-graffiti tracking-widest uppercase text-center w-full block transform scale-x-[1.75] origin-center chaos-glitch-text"
+                        data-text="FRESH PRINTS">
+                        Fresh Prints
+                    </span>
                 </span>
-
-                <span
-                    class="relative z-10 transition-transform duration-300 ease-out group-hover:-translate-x-1 group-hover:-translate-y-1">
+                <span class="relative z-10">
                     FRESH PRINTS
                 </span>
             </a>
+
             <div class="hidden md:flex items-center gap-stack-lg">
                 <div class="flex gap-gutter">
-                    <a class="font-label-bold text-label-bold text-on-surface-variant hover:text-secondary-fixed-dim transition-colors duration-200"
-                        href="#">Apparel</a>
-                    <a class="font-label-bold text-label-bold text-on-surface-variant hover:text-secondary-fixed-dim transition-colors duration-200"
-                        href="#">Terms and Conditions</a>
-                    <a class="font-label-bold text-label-bold text-on-surface-variant hover:text-secondary-fixed-dim transition-colors duration-200"
-                        href="#">Privacy Policy</a>
-                    <a class="font-label-bold text-label-bold text-on-surface-variant hover:text-secondary-fixed-dim transition-colors duration-200"
-                        href="#">Contact Us</a>
-                    <a class="font-label-bold text-label-bold text-on-surface-variant hover:text-secondary-fixed-dim transition-colors duration-200"
-                        href="#">About</a>
+
+                    <a class="group relative inline-flex items-center justify-center font-label-bold text-label-bold text-on-background nfs-nav-link select-none"
+                        href="#">
+                        <span
+                            class="nfs-graffiti-container opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                            <span class="font-graffiti-display uppercase w-full nfs-bg-graffiti">APPAREL</span>
+                        </span>
+                        <span class="relative z-10 pointer-events-none">Apparel</span>
+                    </a>
+
+                    <a class="group relative inline-flex items-center justify-center font-label-bold text-label-bold text-on-background nfs-nav-link select-none"
+                        href="#">
+                        <span
+                            class="nfs-graffiti-container opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                            <span class="font-graffiti-display uppercase w-full nfs-bg-graffiti">Terms and
+                                Conditions</span>
+                        </span>
+                        <span class="relative z-10 pointer-events-none">Terms and Conditions</span>
+                    </a>
+
+                    <a class="group relative inline-flex items-center justify-center font-label-bold text-label-bold text-on-background nfs-nav-link select-none"
+                        href="#">
+                        <span
+                            class="nfs-graffiti-container opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                            <span class="font-graffiti-display uppercase w-full nfs-bg-graffiti">Privacy Policy</span>
+                        </span>
+                        <span class="relative z-10 pointer-events-none">Privacy Policy</span>
+                    </a>
+
+                    <a class="group relative inline-flex items-center justify-center font-label-bold text-label-bold text-on-background nfs-nav-link select-none"
+                        href="#">
+                        <span
+                            class="nfs-graffiti-container opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                            <span class="font-graffiti-display uppercase w-full nfs-bg-graffiti">Contact Us</span>
+                        </span>
+                        <span class="relative z-10 pointer-events-none">Contact Us</span>
+                    </a>
+
+                    <a class="group relative inline-flex items-center justify-center font-label-bold text-label-bold text-on-background nfs-nav-link select-none"
+                        href="#">
+                        <span
+                            class="nfs-graffiti-container opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                            <span class="font-graffiti-display uppercase w-full nfs-bg-graffiti">About</span>
+                        </span>
+                        <span class="relative z-10 pointer-events-none">About</span>
+                    </a>
+
                 </div>
             </div>
         </nav>
@@ -164,7 +440,7 @@
             <div
                 class="md:col-span-12 pt-12 border-t border-on-primary/10 mt-12 flex flex-col md:flex-row justify-between items-center gap-4">
                 <div class="font-label-bold text-label-bold text-on-primary/70">
-                    © 2024 FRESH PRINTS. CONTROLLED CHAOS.
+                    © 2026 FRESH PRINTS. CONTROLLED CHAOS.
                 </div>
                 <div class="flex gap-4">
                     <span class="w-3 h-3 bg-secondary-container rounded-full animate-pulse"></span>
@@ -175,3 +451,5 @@
         </div>
     </footer>
 </body>
+
+</html>
