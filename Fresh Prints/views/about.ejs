@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>About Us | FRESH PRINTS</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Syne:wght@700;800&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .hard-shadow {
+            box-shadow: 8px 8px 0px 0px #000000;
+        }
+
+        .accent-blob {
+            filter: blur(120px);
+            opacity: 0.15;
+            z-index: -1;
+        }
+
+        .hover-accent-1:hover {
+            border-color: #00e3fd;
+        }
+
+        .hover-accent-2:hover {
+            border-color: #e800e8;
+        }
+
+        .hover-accent-3:hover {
+            border-color: #ffd7f5;
+        }
+
+        /* Custom scrollbar for premium feel */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f9f9f9;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #000000;
+        }
+    </style>
+    <!-- Tailwind Config Verbatim -->
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed": "#e5e2e1",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-container": "#00616d",
+                        "tertiary-fixed": "#ffd7f5",
+                        "inverse-surface": "#2f3131",
+                        "surface-container-high": "#e8e8e8",
+                        "surface-container": "#eeeeee",
+                        "on-tertiary-fixed-variant": "#810081",
+                        "background": "#f9f9f9",
+                        "on-tertiary": "#ffffff",
+                        "surface-bright": "#f9f9f9",
+                        "on-tertiary-fixed": "#380038",
+                        "on-primary": "#ffffff",
+                        "secondary-container": "#00e3fd",
+                        "on-tertiary-container": "#e800e8",
+                        "primary": "#000000",
+                        "on-error-container": "#93000a",
+                        "surface": "#f9f9f9",
+                        "secondary-fixed-dim": "#00daf3",
+                        "surface-dim": "#dadada",
+                        "on-surface": "#1a1c1c",
+                        "primary-container": "#1c1b1b",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed": "#1c1b1b",
+                        "outline": "#747878",
+                        "error-container": "#ffdad6",
+                        "surface-tint": "#5f5e5e",
+                        "surface-variant": "#e2e2e2",
+                        "secondary-fixed": "#9cf0ff",
+                        "on-secondary-fixed-variant": "#004f58",
+                        "tertiary": "#000000",
+                        "on-primary-container": "#858383",
+                        "surface-container-low": "#f3f3f4",
+                        "on-primary-fixed-variant": "#474646",
+                        "on-background": "#1a1c1c",
+                        "inverse-on-surface": "#f0f1f1",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface-variant": "#444748",
+                        "tertiary-fixed-dim": "#ffabf3",
+                        "secondary": "#006875",
+                        "surface-container-highest": "#e2e2e2",
+                        "outline-variant": "#c4c7c7",
+                        "tertiary-container": "#380038",
+                        "on-secondary-fixed": "#001f24",
+                        "on-error": "#ffffff",
+                        "primary-fixed-dim": "#c8c6c5",
+                        "inverse-primary": "#c8c6c5"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-lg": "64px",
+                        "gutter": "24px",
+                        "container-max": "1440px",
+                        "section-gap": "128px",
+                        "margin-desktop": "64px",
+                        "stack-md": "24px",
+                        "margin-mobile": "16px",
+                        "unit": "8px",
+                        "stack-sm": "8px"
+                    },
+                    "fontFamily": {
+                        "label-bold": ["Inter"],
+                        "headline-xl": ["Syne"],
+                        "headline-sm": ["Syne"],
+                        "headline-md": ["Syne"],
+                        "headline-lg": ["Syne"],
+                        "headline-lg-mobile": ["Syne"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-bold": ["14px", { "lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-xl": ["72px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "800" }],
+                        "headline-sm": ["24px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "headline-md": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "headline-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "headline-lg-mobile": ["36px", { "lineHeight": "1.1", "fontWeight": "800" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "1.2", "fontWeight": "500" }]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+
+<body class="bg-background text-on-background font-body-md text-body-md overflow-x-hidden">
+    <!-- Atmospheric Blobs (Design System: Selective Vibrant Blurs) -->
+    <div class="fixed top-0 right-0 w-1/2 h-1/2 bg-secondary-container accent-blob rounded-full -mr-64 -mt-64"></div>
+    <div class="fixed bottom-0 left-0 w-1/3 h-1/3 bg-on-tertiary-container accent-blob rounded-full -ml-32 -mb-32">
+    </div>
+
+
+    <main class="w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+        <!-- Hero Section: Controlled Chaos -->
+        <section class="mt-stack-lg md:mt-section-gap grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
+            <div class="md:col-span-8">
+                <div
+                    class="inline-block bg-primary text-on-primary px-4 py-1 mb-gutter font-label-bold text-label-bold">
+                    ABOUT THE BRAND</div>
+                <h1
+                    class="font-headline-xl text-headline-xl leading-none md:text-headline-xl text-headline-lg-mobile mb-gutter">
+                    CONTROLLED <br />
+                    <span class="text-secondary-container">CHAOS.</span>
+                </h1>
+                <p class="font-body-lg text-body-lg max-w-2xl text-on-surface-variant">
+                    We don't just print graphics; we engineer visual artifacts. Born from the tension between
+                    Swiss-inspired precision and explosive street-art energy, Fresh Prints is the bridge between
+                    professional execution and rebellious soul.
+                </p>
+            </div>
+            <div class="md:col-span-4 relative h-[400px] md:h-[600px] mt-gutter md:mt-0">
+                <div class="absolute inset-0 border-2 border-primary z-10"></div>
+                <div class="absolute inset-0 bg-cover bg-center grayscale hover:grayscale-0 transition-all duration-700"
+                    data-alt="A high-contrast photography of a modern industrial screen-printing studio. The space is filled with precise machinery juxtaposed against walls covered in vibrant, colorful graffiti tags. The lighting is dramatic, with sharp shadows and bright highlights, emphasizing a professional yet rebellious atmosphere with premium tools and chaotic artistic energy."
+                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBOzUnvcetl2BPmv0m0RhKjmyId7kiLL6DHWZ32shsoe4FbPIunhFXJBA41_igTDsKWyEfVq2ylFUeg8psrat4OVLfFgsO7s9IXfcEdcxfZ1zg5hfDESVZ1F4BcwdMq0pCJi3tOvcKUjWvLZZnJc2FhPenX9imiwB0m0GTUhQqNeHGuPjndoN-FRkTbkeZWTKfLsmRmnCUi38rn2XqdOLlVsDHALnwOubPhm0m9fBFG6WiUrFVF_95f')">
+                </div>
+                <div
+                    class="absolute -bottom-8 -left-8 bg-on-tertiary-container text-on-tertiary p-8 z-20 hidden md:block">
+                    <p class="font-headline-sm text-headline-sm">EST. 2024</p>
+                </div>
+            </div>
+        </section>
+        <!-- Our Story: Asymmetric Gallery -->
+        <section class="mt-section-gap">
+            <div class="flex flex-col md:flex-row gap-section-gap">
+                <div class="md:w-1/2 space-y-gutter">
+                    <h2 class="font-headline-lg text-headline-lg text-headline-lg-mobile">OUR STORY</h2>
+                    <div class="h-1 w-24 bg-primary"></div>
+                    <p class="font-body-lg text-body-lg text-on-surface-variant">
+                        Fresh Prints was founded in a basement studio where grid-based layout theory met spray-paint
+                        fumes. We found that the market was split: corporate shops lacked soul, and street artists
+                        lacked scale.
+                    </p>
+                    <p class="font-body-lg text-body-lg text-on-surface-variant">
+                        We chose the middle path. High-fidelity materials, 1200dpi precision, and an refusal to be
+                        boring. Every piece that leaves our facility is a testament to the belief that professionalism
+                        doesn't have to be sterile.
+                    </p>
+                    <button
+                        class="mt-stack-md px-unit*10 py-gutter bg-primary text-on-primary font-label-bold text-label-bold hover:bg-secondary-container hover:text-primary transition-all duration-300">
+                        WORK WITH US
+                    </button>
+                </div>
+                <div class="md:w-1/2 grid grid-cols-2 gap-stack-md">
+                    <div class="border-2 border-primary p-2 hover-accent-1 transition-all">
+                        <img class="w-full h-full object-cover"
+                            data-alt="Close-up of a premium, thick-vinyl sticker with a matte finish. The design is a minimalist geometric shape with sharp black lines on a white background, featuring a single vibrant neon blue accent. The lighting highlights the texture of the material, suggesting extreme durability and high-end manufacturing."
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDH-WCXc5mLvgGJPPAaR1KHGjycLpsC6g_-1eTtFwlXV5eV_-Cjt_1VH6PN-R6fp7RdsxJJDtMgelQj7XXQ8jYxshXpl55LRBh6eTs_4HeBaKOtixRy9kCgvWjMcb2kHhsLbiVm5Gqb3mwcnREB6TamM7GZyktVrqVXsI0JVe_lRT6NvRu5uwII0h_ZyjGHUgk0RUoo2h_H6ZWcHkOrdVliIaLlmv44iVErqffNnTPw22v4eX5wncsm" />
+                    </div>
+                    <div class="border-2 border-primary p-2 mt-stack-lg hover-accent-2 transition-all">
+                        <img class="w-full h-full object-cover"
+                            data-alt="A collection of street-art inspired posters stacked on a clean white table. The top poster shows a distorted classical sculpture with neon pink spray paint overlay. The setting is a minimalist gallery with bright lighting, creating a high-contrast, premium aesthetic that balances fine art and vandalism."
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCG60kIBwiG0W0_Z7EGuoKip8YWjmAJzFUtICzEzTgm3yM-asUFit6y5RfXHp2GcFD5S9rtY40w8ertAEPYM11owz_sxwfzeEL1DarAszEXOdCqx_t7qSBAWYK7cQ7NZ-aXNWkaePcbHraDRJqX0YkcClBIDg8XSAxbG698Nh3m-EFrPh6joEAy5c9CyIje0YFZ2u-508YlVEHPrKVDmB6VoV3pvuiFi3oGBCwqvnpKMJk5K0zwu8Uw" />
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Our Process: Engineering Visual Artifacts (Bento Grid) -->
+        <section class="mt-section-gap">
+            <h2 class="font-headline-lg text-headline-lg text-headline-lg-mobile mb-stack-lg text-center">THE ARTIFACT
+                PIPELINE</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-gutter h-auto md:h-[800px]">
+                <!-- Step 1: Design Phase -->
+                <div
+                    class="md:col-span-2 border-2 border-primary p-gutter bg-surface hover:bg-white transition-all group">
+                    <div class="flex justify-between items-start mb-stack-lg">
+                        <span
+                            class="font-headline-md text-headline-md text-outline-variant group-hover:text-primary">01</span>
+                        <span class="material-symbols-outlined text-4xl">architecture</span>
+                    </div>
+                    <h3 class="font-headline-sm text-headline-sm mb-stack-sm">THE GRID RIGOR</h3>
+                    <p class="text-on-surface-variant">Every design begins on a strict 12-column Swiss grid. We
+                        establish the skeleton of the artifact before we introduce the energy.</p>
+                </div>
+                <!-- Visual Break 1 -->
+                <div class="border-2 border-primary relative overflow-hidden group">
+                    <img class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                        data-alt="A top-down view of a designer's desk. It features an open laptop showing a complex vector grid layout, a sketchbook with rough ink sketches, and a set of vibrant Pantone color swatches. The aesthetic is extremely clean and organized, illuminated by a bright, cool-toned studio light."
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdZ8aHiH3NvdNHRhZY0qtTH0EHXrQ6WhhRfrhy35eFY9zCpMNexo34Ax3AIOV01VsH1CatNc1PYtwjkG4MGeaHnxz_t2kx_rXFeOSN2uc3kH2mjEYYjda5MHUYdu2_CL0gxufnBuh4Nys7wkAtx1rNse7-AORzgxvUiCeKyf0pYM2aXv9IG2KC5qBfGxd4ZQ9mjdpQThtmrrq3TrCxQK4HeEPtjmcGKdxQUlw7IhwhcVVTe5x-qMTS" />
+                </div>
+                <!-- Step 2: Chaos Injection -->
+                <div
+                    class="border-2 border-primary p-gutter bg-primary text-on-primary hover:bg-secondary-container hover:text-primary transition-all group">
+                    <div class="flex justify-between items-start mb-stack-lg">
+                        <span class="font-headline-md text-headline-md opacity-20 group-hover:opacity-100">02</span>
+                        <span class="material-symbols-outlined text-4xl">auto_fix_high</span>
+                    </div>
+                    <h3 class="font-headline-sm text-headline-sm mb-stack-sm">CHAOS INJECTION</h3>
+                    <p class="opacity-80">Once the structure is set, we break it. Fluid color gradients, digital
+                        glitching, and manual paint overlays create the "controlled" edge.</p>
+                </div>
+                <!-- Step 3: Engineering -->
+                <div class="border-2 border-primary p-gutter bg-surface hover:bg-white transition-all group">
+                    <div class="flex justify-between items-start mb-stack-lg">
+                        <span
+                            class="font-headline-md text-headline-md text-outline-variant group-hover:text-primary">03</span>
+                        <span class="material-symbols-outlined text-4xl">precision_manufacturing</span>
+                    </div>
+                    <h3 class="font-headline-sm text-headline-sm mb-stack-sm">PRECISION OUTPUT</h3>
+                    <p class="text-on-surface-variant">We utilize high-tension screens and archival inks to ensure the
+                        digital energy translates perfectly to physical reality.</p>
+                </div>
+                <!-- Visual Break 2 -->
+                <div class="md:col-span-2 border-2 border-primary relative overflow-hidden group">
+                    <img class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-all duration-700"
+                        data-alt="Action shot of a high-end digital printer head moving rapidly across a pristine white surface, leaving a trail of intense, saturated colors including cyan and magenta. The image is captured with a high shutter speed to show crisp details and ink droplets, set against a monochromatic dark industrial background."
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCw5cB2x80VBFPcIH-zqQIMrACRvA8gn0Vl4hkKah28dLp2SGLqIcySmX7h15YqwatK68Fk_c23ysvb2O1kbCqdUA8f1yMrfDR3RTP147pPaN2PWL0ECWu0S48kkDSHhwoz_2ErabzeJt6TN7fTocceUyR1_5xXNoNQB7BWby_yYK5_YcKPsBdbFzNmWSt5dloqhLXZRNTSfVA8e1_csDkgnLVhQc0hWnjyCEpRR76sK8cGRk4js2l6" />
+                </div>
+                <!-- Step 4: Verification -->
+                <div class="border-2 border-primary p-gutter bg-surface hover:bg-white transition-all group">
+                    <div class="flex justify-between items-start mb-stack-lg">
+                        <span
+                            class="font-headline-md text-headline-md text-outline-variant group-hover:text-primary">04</span>
+                        <span class="material-symbols-outlined text-4xl">verified</span>
+                    </div>
+                    <h3 class="font-headline-sm text-headline-sm mb-stack-sm">THE SEAL</h3>
+                    <p class="text-on-surface-variant">Quality control isn't a checkbox; it's a ceremony. Every piece is
+                        inspected under 5000K lighting before shipping.</p>
+                </div>
+            </div>
+        </section>
+        <!-- The Team: Faces of Friction -->
+        <section class="mt-section-gap mb-section-gap">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-stack-lg">
+                <h2 class="font-headline-lg text-headline-lg text-headline-lg-mobile">THE TEAM</h2>
+                <p class="font-label-bold text-label-bold text-on-surface-variant max-w-sm">A collective of
+                    typographers, street artists, and production engineers.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+                <!-- Member 1 -->
+                <div class="group border-2 border-primary p-2 hover-accent-2 transition-all">
+                    <div class="h-[400px] bg-surface-variant overflow-hidden mb-gutter relative">
+                        <img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                            data-alt="Portrait of a male creative director with tattoos on his hands, wearing a minimalist black apron in a bright studio. He is focused on a large canvas, with a backdrop of neatly organized tools and graphic design books. The style is professional photography with high-key lighting and deep contrast."
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmXdGpaePDSp5M5PHIKpNvLzMoNXNFe30PsO4_X4_cp-Kbp9OnzUcaO6LYB7cNJG7cvJzjgyQbU0lMnpfl4gQb5epV4uK7p4wpHBQa61U-fK8kXazft8WjiOA-Hol752ioAJUCE-8_wxmhAMmrv-259Kpv9t2U4yHXVXasI54ba1KYBcSbaR4ZXhsOFNhDZdgWpS7VRl5bpdEyPV8LuYyJKoUup6yqVEXaLFeuwxUAAE6HjAy09BIa" />
+                    </div>
+                    <div class="p-gutter">
+                        <h4 class="font-headline-sm text-headline-sm">KAI SULIVAN</h4>
+                        <p class="font-label-bold text-label-bold text-on-tertiary-fixed-variant mb-stack-sm">FOUNDER /
+                            CREATIVE LEAD</p>
+                        <p class="text-on-surface-variant">Former Swiss agency director turned muralist. Master of the
+                            grid and the grit.</p>
+                    </div>
+                </div>
+                <!-- Member 2 -->
+                <div class="group border-2 border-primary p-2 hover-accent-1 transition-all md:mt-stack-lg">
+                    <div class="h-[400px] bg-surface-variant overflow-hidden mb-gutter relative">
+                        <img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                            data-alt="Portrait of a female production engineer wearing industrial headphones and a white jumpsuit in a high-tech printing lab. She is holding a finished translucent print up to a bright light panel. The environment is sterile and professional, with sharp reflections on glass surfaces and a cold, modern color palette."
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhDc-9o7BXMlyrqnm24eq7GO0ioVPtrGAB0asvtDOPF_c1CwhuIei1WD6YlapQpORsm8PgRBwsT0Oxg36q74IB1Rw4S0XravXZqaESXFa0zXzEOBpd_Ozjvi1Y7w1eVi7wLlseoKpOkj24dZklgeAN_Sh_QzTb96CajRdW2I-0WqdzQrKUoFqKB_Q9-NwkIIFiEHRXeaTk1mchSJaAf_5PR2RbVIWxf41F3g81yLlzwkR1dJgQLXHf" />
+                    </div>
+                    <div class="p-gutter">
+                        <h4 class="font-headline-sm text-headline-sm">ELARA VANCE</h4>
+                        <p class="font-label-bold text-label-bold text-secondary mb-stack-sm">PRODUCTION ENGINEER</p>
+                        <p class="text-on-surface-variant">Architect of physical artifacts. obsessed with material
+                            science and ink viscosity.</p>
+                    </div>
+                </div>
+                <!-- Member 3 -->
+                <div class="group border-2 border-primary p-2 hover-accent-3 transition-all">
+                    <div class="h-[400px] bg-surface-variant overflow-hidden mb-gutter relative">
+                        <img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                            data-alt="Portrait of a young graphic designer with colorful hair working at a minimalist dual-monitor setup. On the screens are vibrant, chaotic digital illustrations. The studio environment is dimly lit by the glow of the monitors and a single red neon light in the background, creating a mood of focused, high-energy creativity."
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeGbaWfnfcXrEAkStVYATwT7-pchVB5fclvrVPAEK1jlXi2-8WUDMVUQej0vYynhXw0nZj7VqZRI_w6sEal3n8TNpvQX5yHXFgPfDWZOEvDqS_pK3Cnclv_SbldemNwqApOJofTvy_fLy_YycgYBZU4JMU2Ta1Dvm9JM0EXZvxFVwCGCDDfa9O1C2B3V13NWik2HFiqJxx3IploB3aNP5wQIDO1iBykCNJDpqCeqHEjO49I4YCzBIy" />
+                    </div>
+                    <div class="p-gutter">
+                        <h4 class="font-headline-sm text-headline-sm">MICO PARK</h4>
+                        <h5 class="font-label-bold text-label-bold text-tertiary-fixed-dim mb-stack-sm">VISUAL ALCHEMIST
+                        </h5>
+                        <p class="text-on-surface-variant">The soul behind the chaos. Expert in digital destruction and
+                            color theory.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Micro-interaction Script -->
+    <script>
+        // Reveal animation on scroll
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100');
+                    entry.target.classList.remove('opacity-0', 'translate-y-10');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            section.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-10');
+            observer.observe(section);
+        });
+
+        // Hover effect for TopNavBar Links
+        const navLinks = document.querySelectorAll('nav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.forEach(l => l.classList.remove('border-b-2', 'border-primary', 'text-primary', 'pb-1'));
+                navLinks.forEach(l => l.classList.add('text-on-surface-variant'));
+
+                link.classList.add('border-b-2', 'border-primary', 'text-primary', 'pb-1');
+                link.classList.remove('text-on-surface-variant');
+            });
+        });
+    </script>
+</body>
+
+</html>

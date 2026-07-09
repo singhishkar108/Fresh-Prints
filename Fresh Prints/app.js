@@ -18,10 +18,8 @@ app.set("layout", "_Layout"); // Renders layout file by default
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// 4. Default Route - home.ejs opens up first
-app.get("/", (req, res) => {
-  res.render("home", { title: "Home" });
-});
+// 4. Use the web routes
+app.use("/", require("./routes/webRoutes"));
 
 // Start Server
 app.listen(PORT, () => {

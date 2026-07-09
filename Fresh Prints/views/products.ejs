@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>FRESH PRINTS | THE CANVAS</title>
+    <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Syne:wght@700;800&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Material Icons -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#380038",
+                        "secondary-fixed": "#9cf0ff",
+                        "surface-container-low": "#f3f3f4",
+                        "inverse-surface": "#2f3131",
+                        "secondary-container": "#00e3fd",
+                        "tertiary": "#000000",
+                        "inverse-on-surface": "#f0f1f1",
+                        "on-surface": "#1a1c1c",
+                        "on-surface-variant": "#444748",
+                        "on-primary-container": "#858383",
+                        "primary": "#000000",
+                        "primary-fixed-dim": "#c8c6c5",
+                        "on-primary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed-dim": "#ffabf3",
+                        "on-tertiary-fixed": "#380038",
+                        "on-primary-fixed": "#1c1b1b",
+                        "surface-bright": "#f9f9f9",
+                        "surface-container": "#eeeeee",
+                        "inverse-primary": "#c8c6c5",
+                        "error-container": "#ffdad6",
+                        "on-secondary": "#ffffff",
+                        "background": "#f9f9f9",
+                        "on-secondary-container": "#00616d",
+                        "on-tertiary-fixed-variant": "#810081",
+                        "on-background": "#1a1c1c",
+                        "on-tertiary-container": "#e800e8",
+                        "primary-fixed": "#e5e2e1",
+                        "secondary": "#006875",
+                        "outline": "#747878",
+                        "surface": "#f9f9f9",
+                        "on-tertiary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "secondary-fixed-dim": "#00daf3",
+                        "surface-dim": "#dadada",
+                        "tertiary-fixed": "#ffd7f5",
+                        "on-primary-fixed-variant": "#474646",
+                        "surface-container-high": "#e8e8e8",
+                        "primary-container": "#1c1b1b",
+                        "surface-container-highest": "#e2e2e2",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-tint": "#5f5e5e",
+                        "on-secondary-fixed": "#001f24",
+                        "surface-variant": "#e2e2e2",
+                        "outline-variant": "#c4c7c7",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed-variant": "#004f58"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "64px",
+                        "stack-md": "24px",
+                        "unit": "8px",
+                        "section-gap": "128px",
+                        "margin-mobile": "16px",
+                        "stack-sm": "8px",
+                        "stack-lg": "64px",
+                        "gutter": "24px",
+                        "container-max": "1440px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "label-bold": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Syne"],
+                        "headline-sm": ["Syne"],
+                        "headline-xl": ["Syne"],
+                        "headline-lg": ["Syne"],
+                        "label-sm": ["Inter"],
+                        "headline-lg-mobile": ["Syne"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-bold": ["14px", { "lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-md": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "headline-sm": ["24px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "headline-xl": ["72px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "800" }],
+                        "headline-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "label-sm": ["12px", { "lineHeight": "1.2", "fontWeight": "500" }],
+                        "headline-lg-mobile": ["36px", { "lineHeight": "1.1", "fontWeight": "800" }]
+                    }
+                },
+            },
+        }
+    </script>
+
+    <script>
+        // Product Filtering Function
+        function filterProducts(category) {
+            const cards = document.querySelectorAll('.product-card');
+            const buttons = document.querySelectorAll('.category-filter');
+
+            // Update active button state
+            buttons.forEach(btn => {
+                if (btn.innerText.toLowerCase() === category.toLowerCase()) {
+                    btn.classList.add('active');
+                    btn.classList.remove('text-on-surface-variant');
+                } else {
+                    btn.classList.remove('active');
+                    btn.classList.add('text-on-surface-variant');
+                }
+            });
+
+            // Filter cards with animation
+            cards.forEach(card => {
+                const cardCategory = card.getAttribute('data-category');
+
+                if (category === 'all' || cardCategory === category) {
+                    card.style.display = 'block';
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0) scale(1)';
+                    }, 50);
+                } else {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px) scale(0.95)';
+                    setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 400);
+                }
+            });
+        }
+
+        // Navigation Chevrons Dynamic Visibility Logic
+        document.addEventListener("DOMContentLoaded", () => {
+            const container = document.getElementById('filter-scroll-container');
+            const leftArrow = document.getElementById('arrow-left');
+            const rightArrow = document.getElementById('arrow-right');
+
+            if (!container || !leftArrow || !rightArrow) return;
+
+            function updateChevronVisibility() {
+                const scrollLeft = container.scrollLeft;
+                const maxScroll = container.scrollWidth - container.clientWidth;
+
+                // Handle left chevron visibility (Hide if at the very start)
+                if (scrollLeft <= 2) {
+                    leftArrow.style.setProperty('display', 'none', 'important');
+                } else {
+                    leftArrow.style.setProperty('display', 'flex', 'important');
+                }
+
+                // Handle right chevron visibility (Hide if at the very end)
+                if (scrollLeft >= maxScroll - 2) {
+                    rightArrow.style.setProperty('display', 'none', 'important');
+                } else {
+                    rightArrow.style.setProperty('display', 'flex', 'important');
+                }
+            }
+
+            // Add scroll and window resize listeners
+            container.addEventListener('scroll', updateChevronVisibility);
+            window.addEventListener('resize', updateChevronVisibility);
+
+            // Run initial configuration once components render
+            setTimeout(updateChevronVisibility, 150);
+        });
+    </script>
+
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        #filter-scroll-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .product-card {
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+        }
+
+        /* Sticker Ripple Effect - CSS Only */
+        .ripple-trigger:hover .ripple-border {
+            animation: ripple 1.5s infinite ease-out;
+        }
+
+        @keyframes ripple {
+            0% {
+                transform: scale(0.9);
+                opacity: 0.6;
+                border-width: 8px;
+            }
+
+            100% {
+                transform: scale(1.4);
+                opacity: 0;
+                border-width: 0px;
+            }
+        }
+
+        .category-filter.active {
+            color: #000;
+            border-bottom: 2px solid #000;
+        }
+
+        /* Asymmetric Layout Utilities */
+        .asymmetric-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+
+        /* Tab Container Utilities */
+        .tabs-container-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
+        .tabs-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            white-space: nowrap;
+            padding: 0 10px;
+            width: 100%;
+        }
+
+        /* Hide scrollbar for clean look */
+        .tabs-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Style the clean chevron arrows */
+        .nav-arrow {
+            background: transparent;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            padding: 0 15px;
+            /* Give space within the tab area */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            user-select: none;
+            transition: opacity 0.2s ease;
+        }
+
+        .nav-arrow:hover {
+            opacity: 0.7;
+        }
+
+        /* Class to handle conditional visibility */
+        .nav-arrow.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body class="bg-background text-on-background font-body-md">
+
+    <main class="mt-32 pb-section-gap">
+
+        <section class="px-margin-desktop max-w-container-max mx-auto pb-stack-lg">
+            <div class="asymmetric-grid">
+                <div class="col-span-12 md:col-span-8">
+                    <h1 class="font-headline-xl text-headline-xl uppercase">The Canvas</h1>
+                    <p class="font-body-lg text-body-lg mt-stack-md max-w-xl text-on-surface-variant">
+                        Our curated archive of premium rebellious essentials. Every piece is a structural anchor for
+                        your artistic expression. Professional execution, raw soul.
+                    </p>
+                </div>
+                <!-- <div class="col-span-12 md:col-span-4 flex flex-col justify-end items-end gap-4">
+                    <span class="font-label-bold text-label-bold uppercase text-outline">EST. 2024 / NYC</span>
+                    <div class="w-full h-px bg-primary"></div>
+                </div> -->
+            </div>
+        </section>
+        <!-- Filtering Section -->
+        <section class="px-margin-desktop max-w-container-max mx-auto mb-stack-lg relative">
+            <div class="flex items-center border-b border-surface-container relative">
+
+                <button type="button" id="arrow-left"
+                    onclick="document.getElementById('filter-scroll-container').scrollBy({ left: -200, behavior: 'smooth' })"
+                    class="z-10 text-primary px-4 hover:opacity-70 transition-all flex items-center justify-center cursor-pointer select-none"
+                    style="display: none;" aria-label="Scroll Left">
+                    <span class="material-symbols-outlined">chevron_left</span>
+                </button>
+
+                <div id="filter-scroll-container"
+                    class="flex items-center gap-8 py-4 overflow-x-auto whitespace-nowrap scroll-smooth w-full px-2"
+                    style="-ms-overflow-style: none; scrollbar-width: none;">
+                    <button
+                        class="category-filter active font-label-bold text-label-bold uppercase tracking-widest transition-all"
+                        onclick="filterProducts('all')">All</button>
+                    <button
+                        class="category-filter font-label-bold text-label-bold uppercase tracking-widest text-on-surface-variant hover:text-primary transition-all"
+                        onclick="filterProducts('stickers')">Stickers</button>
+                    <button
+                        class="category-filter font-label-bold text-label-bold uppercase tracking-widest text-on-surface-variant hover:text-primary transition-all"
+                        onclick="filterProducts('business cards')">Business cards</button>
+                    <button
+                        class="category-filter font-label-bold text-label-bold uppercase tracking-widest text-on-surface-variant hover:text-primary transition-all"
+                        onclick="filterProducts('flyers')">Flyers</button>
+                    <button
+                        class="category-filter font-label-bold text-label-bold uppercase tracking-widest text-on-surface-variant hover:text-primary transition-all"
+                        onclick="filterProducts('t shirts')">T shirts</button>
+                    <button
+                        class="category-filter font-label-bold text-label-bold uppercase tracking-widest text-on-surface-variant hover:text-primary transition-all"
+                        onclick="filterProducts('caps')">Caps</button>
+                    <button
+                        class="category-filter font-label-bold text-label-bold uppercase tracking-widest text-on-surface-variant hover:text-primary transition-all"
+                        onclick="filterProducts('mugs')">Mugs</button>
+                    <button
+                        class="category-filter font-label-bold text-label-bold uppercase tracking-widest text-on-surface-variant hover:text-primary transition-all"
+                        onclick="filterProducts('coasters')">Coasters</button>
+                    <button
+                        class="category-filter font-label-bold text-label-bold uppercase tracking-widest text-on-surface-variant hover:text-primary transition-all"
+                        onclick="filterProducts('mouse pads')">Mouse pads</button>
+                    <button
+                        class="category-filter font-label-bold text-label-bold uppercase tracking-widest text-on-surface-variant hover:text-primary transition-all"
+                        onclick="filterProducts('puzzles')">Puzzles</button>
+                    <button
+                        class="category-filter font-label-bold text-label-bold uppercase tracking-widest text-on-surface-variant hover:text-primary transition-all"
+                        onclick="filterProducts('hoodies')">Hoodies</button>
+                    <button
+                        class="category-filter font-label-bold text-label-bold uppercase tracking-widest text-on-surface-variant hover:text-primary transition-all"
+                        onclick="filterProducts('cushions')">Cushions</button>
+                    <button
+                        class="category-filter font-label-bold text-label-bold uppercase tracking-widest text-on-surface-variant hover:text-primary transition-all"
+                        onclick="filterProducts('canvas')">Canvas</button>
+                    <button
+                        class="category-filter font-label-bold text-label-bold uppercase tracking-widest text-on-surface-variant hover:text-primary transition-all"
+                        onclick="filterProducts('welcome boards')">Welcome boards</button>
+                    <button
+                        class="category-filter font-label-bold text-label-bold uppercase tracking-widest text-on-surface-variant hover:text-primary transition-all"
+                        onclick="filterProducts('invitations')">Invitations</button>
+                    <button
+                        class="category-filter font-label-bold text-label-bold uppercase tracking-widest text-on-surface-variant hover:text-primary transition-all"
+                        onclick="filterProducts('water bottles')">Water bottles</button>
+                    <button
+                        class="category-filter font-label-bold text-label-bold uppercase tracking-widest text-on-surface-variant hover:text-primary transition-all"
+                        onclick="filterProducts('photo cube')">Photo cube</button>
+                    <button
+                        class="category-filter font-label-bold text-label-bold uppercase tracking-widest text-on-surface-variant hover:text-primary transition-all"
+                        onclick="filterProducts('embroidery')">Embroidery</button>
+                    <button
+                        class="category-filter font-label-bold text-label-bold uppercase tracking-widest text-on-surface-variant hover:text-primary transition-all"
+                        onclick="filterProducts('badges')">Badges</button>
+                </div>
+
+                <button type="button" id="arrow-right"
+                    onclick="document.getElementById('filter-scroll-container').scrollBy({ left: 200, behavior: 'smooth' })"
+                    class="z-10 text-primary px-4 hover:opacity-70 transition-all flex items-center justify-center cursor-pointer select-none"
+                    aria-label="Scroll Right">
+                    <span class="material-symbols-outlined">chevron_right</span>
+                </button>
+
+            </div>
+        </section>
+        <!-- Product Grid -->
+        <section class="px-margin-desktop max-w-container-max mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter" id="product-grid">
+                <!-- Product 1: Apparel -->
+                <div class="product-card group relative bg-surface-container-lowest border border-primary overflow-hidden apparel"
+                    data-category="apparel">
+                    <div class="smoke-trigger relative aspect-square overflow-hidden bg-white">
+                        <div class="smoke-plume absolute inset-0 bg-secondary-container opacity-0"
+                            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDIe-rDJAMUNrMPv7dzvdMO-E6X1EUjikwwT46KOJTKD3C-_WAQK7x5YUUfQmPYPCEDzG8qeQJng9Z45wkEKMOPxYXiFpIJTndP1QNUP6P6BTJEWIfI8Zz3tmDI5Jvc2IdAu4-3V_9rGH72Yfrm_vzI7KZ06M_Y66psG968Sg_2RgiU2nkudIrlRzsFPjeCPMoDDyz4evetJjjXn8ume9HKcOJViQMKGGmp6-0qOxVvaW_-QAlwQx3NmaXzVknbEQ2bJmhU4yzakU0'); background-size: cover;">
+                        </div>
+                        <div
+                            class="absolute inset-0 z-10 flex items-center justify-center p-12 transition-transform duration-700 group-hover:scale-110">
+                            <img alt="Premium heavyweight black oversized hoodie" class="w-full h-full object-contain"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAj83ePtNoV4C5dyfIdu8yVnzQfWM19ikmuL42eCM0xNlfwAS_E8Fh2-758rN5stylkOs1ACHLDStoXTPYZr0Vp8ZDheFawSflAyM0wKkjPjq303EizqwhxYVSIN-2P6BBBqcTEKBDwuBoI37AabqgAtKLaO34LE_iE8TAqpuGtNMaYeoT59-A1JQNec3UxUYS0DE3g6Qt4DhbtKJHa0r8KW2BZAM9jDKe9HyOKhlUIWhgwZtQ69JbnxNESxJUtsLjsf0123yIBKFc" />
+                        </div>
+                    </div>
+                    <div class="p-stack-md flex justify-between items-end border-t border-primary">
+                        <div>
+                            <span class="font-label-sm text-label-sm uppercase text-outline-variant mb-1 block">Series
+                                01</span>
+                            <h3 class="font-headline-sm text-headline-sm uppercase">Heavyweight Armor</h3>
+                        </div>
+                        <span class="font-label-bold text-label-bold">$85.00</span>
+                    </div>
+                </div>
+                <!-- Product 2: Sticker -->
+                <div class="product-card group relative bg-surface-container-lowest border border-primary overflow-hidden stickers"
+                    data-category="stickers">
+                    <div
+                        class="ripple-trigger relative aspect-square overflow-hidden bg-white flex items-center justify-center p-24">
+                        <div
+                            class="ripple-border absolute inset-0 border-2 border-secondary-container opacity-0 rounded-full scale-0">
+                        </div>
+                        <div
+                            class="relative z-10 transition-transform duration-500 group-hover:rotate-12 group-hover:scale-105">
+                            <img alt="Collection of die-cut vinyl stickers" class="w-full h-full object-contain"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGDNS85sSetHNlTKHO0EurHtJ6WduMeBN1tLUT9a611jCUN79D5EyZ90z7fqQk-MihCAtusmxeel1SMzBJfOojQGYdHgcnmG2h6Guh6lkdAo2obr6WrmUnkYkslZEtXf80KWlpRI0hBGJqaJjltUXPPJXaVaXdBN2MU53Toh9A8weeAVoRDNGDuR3bdbJhqeX8gzm7WRqSzGtNugzxHwzQRbBHf4ParG2TKgBx0o_c186a9UiKqsvJN0dkIvIlOpDqgwX_f0cejGc" />
+                        </div>
+                    </div>
+                    <div class="p-stack-md flex justify-between items-end border-t border-primary">
+                        <div>
+                            <span class="font-label-sm text-label-sm uppercase text-outline-variant mb-1 block">Vinyl
+                                Pack</span>
+                            <h3 class="font-headline-sm text-headline-sm uppercase">Rebel Clusters</h3>
+                        </div>
+                        <span class="font-label-bold text-label-bold">$18.00</span>
+                    </div>
+                </div>
+                <!-- Product 3: Custom -->
+                <div class="product-card group relative bg-surface-container-lowest border border-primary overflow-hidden custom"
+                    data-category="custom">
+                    <div
+                        class="relative aspect-square overflow-hidden bg-primary flex items-center justify-center group-hover:bg-tertiary transition-colors duration-500">
+                        <div class="text-on-primary text-center px-8">
+                            <span class="material-symbols-outlined text-[64px] mb-4"
+                                style="font-variation-settings: 'FILL' 1;">edit_square</span>
+                            <h4 class="font-headline-md text-headline-md uppercase leading-tight">Design Lab Access</h4>
+                        </div>
+                    </div>
+                    <div class="p-stack-md flex justify-between items-end border-t border-primary">
+                        <div>
+                            <span
+                                class="font-label-sm text-label-sm uppercase text-outline-variant mb-1 block">Service</span>
+                            <h3 class="font-headline-sm text-headline-sm uppercase">Custom Portal</h3>
+                        </div>
+                        <span class="font-label-bold text-label-bold">Enquire</span>
+                    </div>
+                </div>
+                <!-- Product 4: Apparel -->
+                <div class="product-card group relative bg-surface-container-lowest border border-primary overflow-hidden apparel"
+                    data-category="apparel">
+                    <div class="smoke-trigger relative aspect-square overflow-hidden bg-white">
+                        <div class="smoke-plume absolute inset-0 bg-tertiary-container opacity-0"
+                            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDIe-rDJAMUNrMPv7dzvdMO-E6X1EUjikwwT46KOJTKD3C-_WAQK7x5YUUfQmPYPCEDzG8qeQJng9Z45wkEKMOPxYXiFpIJTndP1QNUP6P6BTJEWIfI8Zz3tmDI5Jvc2IdAu4-3V_9rGH72Yfrm_vzI7KZ06M_Y66psG968Sg_2RgiU2nkudIrlRzsFPjeCPMoDDyz4evetJjjXn8ume9HKcOJViQMKGGmp6-0qOxVvaW_-QAlwQx3NmaXzVknbEQ2bJmhU4yzakU0'); background-size: cover;">
+                        </div>
+                        <div
+                            class="absolute inset-0 z-10 flex items-center justify-center p-12 transition-transform duration-700 group-hover:-rotate-3 group-hover:scale-105">
+                            <img alt="White cotton t-shirt with abstract black print"
+                                class="w-full h-full object-contain"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPdEoC6VOHJ3KVA7_l_ovbJXi2TqFozhRg6nxqxq1zhSN02n38SoW0i5pOY8gn_0t4z_DhKNsFGcFoYoiSRhyAAQTmuEiefNjhJJYF6pR7kDDg_FKd5zMH5MNz0LdF8ehlF2I8s5cIEJSYsaeuHH7gh3v2vwY3sZV2xywpRQIqbSFjnzJOUHt9T6M_021t-xr4uyMHqf7qCa6mNcPLdMJT82kPXoCLFQ1veQg3YHJhsQnEh0gBJhwJvQ4x4ptkdLtj5mhTvSOT2ng" />
+                        </div>
+                    </div>
+                    <div class="p-stack-md flex justify-between items-end border-t border-primary">
+                        <div>
+                            <span class="font-label-sm text-label-sm uppercase text-outline-variant mb-1 block">Series
+                                02</span>
+                            <h3 class="font-headline-sm text-headline-sm uppercase">Canvas Tee</h3>
+                        </div>
+                        <span class="font-label-bold text-label-bold">$42.00</span>
+                    </div>
+                </div>
+                <!-- Product 5: Sticker -->
+                <div class="product-card group relative bg-surface-container-lowest border border-primary overflow-hidden stickers"
+                    data-category="stickers">
+                    <div
+                        class="ripple-trigger relative aspect-square overflow-hidden bg-white flex items-center justify-center p-20">
+                        <div
+                            class="ripple-border absolute inset-0 border-2 border-primary opacity-0 rounded-full scale-0">
+                        </div>
+                        <div class="relative z-10"
+                            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDVnkwAEYpqz9fHAFqoj80tTjStgtewSgalRFsXBknfDF_yLUwLU6Kfk0lrX4hP5JVzdel_jnW4AklYdcIFKxX5RzqGEsDsJtvjtXG-I37HThdVk9WQd4Zj6Sq9lN6zGPCAWVAELeuXy9v1AOm3L3k3YWwkUNvnXZKoCMji7mlYO93AuCyoIuCBp4vmD5eWscpI6gHhY87uokPT7S1IO_bUWMN5DYcaDoSI29hJTBUi7pGLsZHXJXKN2O_MsQUEE7NhaDaLFLR0Urk'); background-size: contain; background-repeat: no-repeat; width: 80%; height: 80%;">
+                        </div>
+                    </div>
+                    <div class="p-stack-md flex justify-between items-end border-t border-primary">
+                        <div>
+                            <span class="font-label-sm text-label-sm uppercase text-outline-variant mb-1 block">Large
+                                Format</span>
+                            <h3 class="font-headline-sm text-headline-sm uppercase">The Liquid S</h3>
+                        </div>
+                        <span class="font-label-bold text-label-bold">$12.00</span>
+                    </div>
+                </div>
+                <!-- Product 6: Apparel -->
+                <div class="product-card group relative bg-surface-container-lowest border border-primary overflow-hidden apparel"
+                    data-category="apparel">
+                    <div class="smoke-trigger relative aspect-square overflow-hidden bg-white">
+                        <div class="smoke-plume absolute inset-0 bg-secondary opacity-0"
+                            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDIe-rDJAMUNrMPv7dzvdMO-E6X1EUjikwwT46KOJTKD3C-_WAQK7x5YUUfQmPYPCEDzG8qeQJng9Z45wkEKMOPxYXiFpIJTndP1QNUP6P6BTJEWIfI8Zz3tmDI5Jvc2IdAu4-3V_9rGH72Yfrm_vzI7KZ06M_Y66psG968Sg_2RgiU2nkudIrlRzsFPjeCPMoDDyz4evetJjjXn8ume9HKcOJViQMKGGmp6-0qOxVvaW_-QAlwQx3NmaXzVknbEQ2bJmhU4yzakU0'); background-size: cover;">
+                        </div>
+                        <div
+                            class="absolute inset-0 z-10 flex items-center justify-center p-12 transition-transform duration-700 group-hover:scale-110">
+                            <img alt="Black bomber jacket with embroidery" class="w-full h-full object-contain"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBQIWjPXZ60c2akP1cS-imuzy4kDeHlP9yk2nH1G7nrn7rkSu7R-ISSuVXxf43n_KQEwP0RCcj33q6_kfCdunabhUetcxD384jLJKwo3Vaul-wAxhqrEF2Q2qszhtwOMFayskDsTW8Fj4AKSUELkUftaDbKXMuJb-384nDl4TkGWR0R91LJKtlkuGCtm0s7jaChJfvWKIYcsYQ013RxhRDWs1_SsdrMEtsgUjsI6IiAB5F66frh5VrnYq36a4VdFGq-5CpnXORBMs" />
+                        </div>
+                    </div>
+                    <div class="p-stack-md flex justify-between items-end border-t border-primary">
+                        <div>
+                            <span
+                                class="font-label-sm text-label-sm uppercase text-outline-variant mb-1 block">Outerwear</span>
+                            <h3 class="font-headline-sm text-headline-sm uppercase">Void Bomber</h3>
+                        </div>
+                        <span class="font-label-bold text-label-bold">$140.00</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="px-margin-desktop py-section-gap max-w-container-max mx-auto relative z-20">
+            <div class="mb-stack-lg">
+                <h2 class="font-headline-lg text-headline-lg uppercase border-b-2 border-primary pb-stack-sm">Artifact
+                    Pipeline</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-gutter auto-rows-[240px]">
+                <!-- Step 1 -->
+                <div
+                    class="reveal-on-scroll md:col-span-1 card-outline bg-white group cursor-pointer p-8 flex flex-col justify-between hover:bg-secondary-container transition-colors">
+                    <div class="flex justify-between items-start">
+                        <span class="font-headline-md text-headline-md opacity-20 italic">01</span>
+                        <span class="material-symbols-outlined text-4xl">mail</span>
+                    </div>
+                    <div>
+                        <h3 class="font-label-bold text-label-bold uppercase mb-2">Connect</h3>
+                        <p class="font-label-sm text-label-sm text-on-surface-variant">Email us your contact info,
+                            design, and product choice.</p>
+                    </div>
+                </div>
+                <!-- Step 2 -->
+                <div class="reveal-on-scroll md:col-span-1 card-outline bg-white group cursor-pointer p-8 flex flex-col justify-between hover:bg-on-tertiary-container hover:text-on-tertiary transition-colors"
+                    style="transition-delay: 100ms;">
+                    <div class="flex justify-between items-start">
+                        <span class="font-headline-md text-headline-md opacity-20 italic">02</span>
+                        <span class="material-symbols-outlined text-4xl">draw</span>
+                    </div>
+                    <div>
+                        <h3 class="font-label-bold text-label-bold uppercase mb-2">Refine</h3>
+                        <p class="font-label-sm text-label-sm opacity-80">We'll finalize the design with you for peak
+                            impact.</p>
+                    </div>
+                </div>
+                <!-- Step 3 -->
+                <div class="reveal-on-scroll md:col-span-1 card-outline bg-primary text-on-primary group cursor-pointer p-8 flex flex-col justify-between"
+                    style="transition-delay: 200ms;">
+                    <div class="flex justify-between items-start">
+                        <span class="font-headline-md text-headline-md opacity-40 italic">03</span>
+                        <span class="material-symbols-outlined text-4xl">payments</span>
+                    </div>
+                    <div>
+                        <h3 class="font-label-bold text-label-bold uppercase mb-2">Secure</h3>
+                        <p class="font-label-sm text-label-sm opacity-60">Secure Payment through our encrypted gateway.
+                        </p>
+                    </div>
+                </div>
+                <!-- Step 4 -->
+                <div class="reveal-on-scroll md:col-span-1 card-outline bg-secondary-container group cursor-pointer p-8 flex flex-col justify-between border-b-4 border-r-4 border-primary"
+                    style="transition-delay: 300ms;">
+                    <div class="flex justify-between items-start">
+                        <span class="font-headline-md text-headline-md opacity-30 italic">04</span>
+                        <span class="material-symbols-outlined text-4xl">bolt</span>
+                    </div>
+                    <div>
+                        <h3 class="font-label-bold text-label-bold uppercase mb-2">Deploy</h3>
+                        <p class="font-label-sm text-label-sm text-primary">Fast Delivery right to your door, anywhere.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+</body>
+
+</html>
